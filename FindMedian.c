@@ -9,80 +9,81 @@ void swap(int arr[], int i, int j) {
     arr[j] = temp;
 }
 
-int * separateArray(int *array, int PossibleMediuan){
-    int R = ARRAY_SIZE - 1;
-    int L = 0;
-    int *subArray = malloc(sizeof(int) * ARRAY_SIZE);
-    for(int i = 0; i < ARRAY_SIZE; i++){
-        if(array[i] <= PossibleMediuan){
-            if (array[i] == PossibleMediuan){
-                subArray[L] = array[i];
-                L++;
-            } else{
-                subArray[L] = array[i];
-                if(L != 0) swap(subArray, L, L-1);
-                L++;
-            }
+int GetMedian(int *array) {
+    int x = rand();
+    return array[x++];
+}
 
-        } else if (array[i] > PossibleMediuan){
-            subArray[R] = array[i];
-            R--;
+int exotericSelect(int *array, int k, int arrayFinish, int *L, int *R){
+
+    int PossibleMedian = GetMedian(array); //GET POSSIBLE MEDIAN OF ARRAY
+    //falta a implmentação do GetMedian
+
+    //separate array
+    int Rsize = 0;
+    int Lsize = 0;
+    for(int i = 0; i < arrayFinish; i++){
+        
+        if(array[i] < PossibleMedian){
+            L[Lsize] = array[i];
+            if(Lsize != 0) swap(L, Lsize, Lsize-1);
+            Lsize++;
+
+        }else if(array[i] == PossibleMedian){
+            L[Lsize] = array[i];
+            Lsize++;
+
+        } else if (array[i] > PossibleMedian){
+            R[Rsize] = array[i];
+            Rsize++;
         }
+
     }
-    printf("L = %d\n", L);
-    printf("R = %d\n", R);
-    return subArray;
+    //
+
+    printf("\n\n");
+    printf("---%d---\n", PossibleMedian);
+    printf("L:");
+    for(int i = 0; i < Lsize; i++){
+        printf(" %d,", L[i]);
+    }
+    printf("\nR:");
+    for(int i = 0; i < Rsize; i++){
+        printf(" %d,", R[i]);
+    }
+    printf("\n\n");
+
+
+    if(Lsize == k-1) return PossibleMedian;
+    else if(Lsize > k-1){ 
+        return exotericSelect(L, k, Lsize, L, R);
+    }
+    else{
+        return exotericSelect(R, k-Lsize-1, Rsize, L, R);
+    }
+
 }
 
 void escope(){
-    int medianNumber = ARRAY_SIZE/2; //MEDIAN NUMBER
-    exotericSelect()
-}
+    int initValue[ARRAY_SIZE] = {66, 39, 98, 93, 62, 73, 95, 31, 45, 82};
 
-void exotericSelect(){
-    int array[ARRAY_SIZE] = {66, 39, 98, 93, 62, 73, 95, 31, 45, 82};
-
-    int medianNumber = ARRAY_SIZE/2; //MEDIAN NUMBER
-
-    //int PossibleMediuan = GetMedian(array, 100); //GET POSSIBLE MEDIAN OF ARRAY
-    int PossibleMediuan = array[6];
-
-    //separate array
-    int R = ARRAY_SIZE - 1;
-    int L = 0;
-    int *subArray = malloc(sizeof(int) * ARRAY_SIZE);
+    int k = ARRAY_SIZE/2; //MEDIAN NUMBER
+    printf("K = %d\n", k);
+    int *array = malloc(sizeof(int) * ARRAY_SIZE);
     for(int i = 0; i < ARRAY_SIZE; i++){
-        if(array[i] <= PossibleMediuan){
-            if (array[i] == PossibleMediuan){
-                subArray[L] = array[i];
-                L++;
-            } else{
-                subArray[L] = array[i];
-                if(L != 0) swap(subArray, L, L-1);
-                L++;
-            }
-
-        } else if (array[i] > PossibleMediuan){
-            subArray[R] = array[i];
-            R--;
-        }
+        array[i] = initValue[i];
+        printf(" %d ", array[i] );
     }
-    printf("L = %d\n", L);
-    printf("R = %d\n", R);
-    //
-
-    if(L+1 == PossibleMediuan) return PossibleMediuan;
-    else if(L+1 > PossibleMediuan) return ...;
-    else return ...;
-     
-    
-    printf("---%d---\n", PossibleMediuan);
-    for(int i = 0 ; i < ARRAY_SIZE; i++){
-        printf(" %d,", subArray[i]);
-    }
+    int arrayFinish = ARRAY_SIZE;
+    int *R = malloc(sizeof(int) * ARRAY_SIZE);
+    int *L = malloc(sizeof(int) * ARRAY_SIZE);
+    int x = exotericSelect(array, k, arrayFinish, L, R);
+    printf("%d", x);
 }
+
+
 
 int main(){
-    exotericSelect();
+    escope();
     return 0;
 }
