@@ -205,7 +205,7 @@ int exotericSelect(int *array, int k, int arraySize, int *L, int *R){
 }
 
 void escope(){
- 
+    int initValue[ARRAY_SIZE] = {66, 39, 98, 93, 62, 73, 95, 31, 45, 82};
 
     int k = ARRAY_SIZE/2; //MEDIAN NUMBER
     printf("K = %d\n", k);
