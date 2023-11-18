@@ -67,22 +67,37 @@ int GetMedian(int *array, int size) {
         for(int i = 0; i < qut_linhas; i++)
             m[i] = calloc(sizeof(int), 5);
         //
-        
+
         //passando valores do array pra matriz e ordenando linha
         for(int i = 0; i < qut_linhas; i++){
-            for (int j = 0; j < 5; j++, x++){
+            for(int j = 0; j < 5; j++, x++){
                 m[i][j] = array[x];
+                ;
             }
             
             ordena(m, 0, 4, i);
         }
         //
 
+        //print array
+        printf("\n");
+        for (int i = 0; i < size; i++){
+            printf("array[%d]: %d\n", i,array[i]);
+        }
+        printf("\n");
+
+        // Print the matrix m
+        for (int i = 0; i < qut_linhas; i++) {
+            for (int j = 0; j < 5; j++) {
+                printf("m[%d][%d]: %d\n", i, j, m[i][j]);
+            }
+        }
+
         // pegando a mediana da mediana
         int *mediana_das_medianas = malloc(sizeof(int) * qut_linhas);
         x = 0;
         for(int i = 0; i < qut_linhas; i++, x++){
-            array[x] = m[i][2];
+            mediana_das_medianas[x] = m[i][2];
         }
         //
 
@@ -144,7 +159,7 @@ int GetMedian(int *array, int size) {
         int *mediana_das_medianas = malloc(sizeof(int) * qut_linhas);
         x = 0;
         for(int i = 0; i < qut_linhas; i++){
-            array[x++] = m[i][2];
+            mediana_das_medianas[x++] = m[i][2];
         }
         //
 
@@ -156,6 +171,12 @@ int GetMedian(int *array, int size) {
 
 
 int exotericSelect(int *array, int k, int arraySize, int *L, int *R){
+    
+    printf("na função:");
+    for(int i = 0; i < arraySize; i++){
+        printf("%d ", array[i]);
+    }
+    printf("\n");
 
     int PossibleMedian = GetMedian(array, arraySize); //GET POSSIBLE MEDIAN OF ARRAY
 
@@ -182,11 +203,14 @@ int exotericSelect(int *array, int k, int arraySize, int *L, int *R){
     //
 
     printf("\n\n");
-    printf("--- %d ---\n", PossibleMedian);
+    printf("PossibleMedian: %d\n", PossibleMedian);
+    printf("Lsize: %d\n", Lsize);
     printf("L:");
     for(int i = 0; i < Lsize; i++){
         printf(" %d,", L[i]);
     }
+    printf("\n");
+    printf("Rsize: %d\n", Rsize);
     printf("\nR:");
     for(int i = 0; i < Rsize; i++){
         printf(" %d,", R[i]);
@@ -194,8 +218,8 @@ int exotericSelect(int *array, int k, int arraySize, int *L, int *R){
     printf("\n\n");
 
 
-    if(Lsize == k-1) return PossibleMedian;
-    else if(Lsize > k-1){ 
+    if(Lsize - 1 == k-1) return PossibleMedian;
+    else if(Lsize - 1 > k-1){ 
         return exotericSelect(L, k, Lsize, L, R);
     }
     else{
@@ -205,23 +229,35 @@ int exotericSelect(int *array, int k, int arraySize, int *L, int *R){
 }
 
 void escope(){
-    int initValue[ARRAY_SIZE] = {66, 39, 98, 93, 62, 73, 95, 31, 45, 82};
+    int initValue[ARRAY_SIZE] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-    int k = ARRAY_SIZE/2; //MEDIAN NUMBER
-    printf("K = %d\n", k);
+    int k;
+    if(ARRAY_SIZE % 2 == 0)
+        k = ARRAY_SIZE/2 - 1; //MEDIAN NUMBER
+    else
+        k = ARRAY_SIZE/2;
+
+    printf("k(indice da mediana) = %d\n", k);
+
     int *array = malloc(sizeof(int) * ARRAY_SIZE);
     if(array == NULL){
         perror("malloc");
         return; 
-    } 
+    }
+
+    printf("inicial:");
     for(int i = 0; i < ARRAY_SIZE; i++){
         array[i] = initValue[i];
-        printf(" %d ", array[i] );
+        printf("%d ", array[i] );
     }
+    printf("\n");
+
     int *R = malloc(sizeof(int) * ARRAY_SIZE);
     int *L = malloc(sizeof(int) * ARRAY_SIZE);
-    int x = exotericSelect(array, k, ARRAY_SIZE, L, R);
-    printf("%d", x);
+
+    int p = exotericSelect(array, k, ARRAY_SIZE, L, R);
+
+    printf("%d", p);
 }
 
 
