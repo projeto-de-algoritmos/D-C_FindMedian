@@ -28,3 +28,6 @@ with open("data.txt", "w") as data_file:
         data_file.write(str(value) + '\n')
 
 print(f"{column_name} valores gravados em data.txt.")
+
+close("Restaurant_Inspection_Scores.csv")
+close("data.txt")
