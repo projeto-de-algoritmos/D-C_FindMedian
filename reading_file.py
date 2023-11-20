@@ -1,28 +1,30 @@
 import csv
 
-data_file = open("data.txt", "wt")
-
-# Specify the CSV file path
+# Especifica o caminho do arquivo CSV
 csv_file_path = 'Restaurant_Inspection_Scores.csv'
 
-# Specify the column name you want to extract
+# Especifica o nome da coluna que deseja extrair
 column_name = 'Score'
 
-# Open the CSV file
+# Lista para armazenar os valores da coluna
+column_values = []
+
+# Abre o arquivo CSV
 with open(csv_file_path, 'r', newline='') as csvfile:
-    # Create a CSV reader
+    # Cria um leitor CSV
     csv_reader = csv.DictReader(csvfile)
 
-    # Check if the specified column exists in the CSV header
+    # Verifica se a coluna especificada existe no cabeçalho CSV
     if column_name not in csv_reader.fieldnames:
-        print(f"Column '{column_name}' not found in the CSV.")
+        print(f"Coluna '{column_name}' não encontrada no CSV.")
     else:
-        # Extract the specified column values
+        # Extrai os valores da coluna especificada
         column_values = [row[column_name] for row in csv_reader]
 
-        # Print the extracted column values
-        print(f"{column_name} column values: {column_values}")
-        
+# Abre o arquivo "data.txt" para escrever os valores da coluna
+with open("data.txt", "w") as data_file:
+    # Grava os valores da coluna em uma única coluna com várias linhas
+    for value in column_values:
+        data_file.write(str(value) + '\n')
 
-close("Restaurant_Inspection_Scores.csv")
-close("data.txt")
+print(f"{column_name} valores gravados em data.txt.")
