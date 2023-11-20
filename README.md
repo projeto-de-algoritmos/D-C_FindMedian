@@ -10,21 +10,21 @@
 | 200020927  |  João Vítor Motta Souto Maior |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Esse projeto consiste em achar a mediana de uma fonte muito grande de dados ,nela foi aplicado os ensinamentos de aula para achar esse mediana e aplica-la ao mundo real para resolver o problema das medianas.
+Outros exemplos de problemas que ele pode resolver inclui: estatísticas de ordem em conjuntos grandes,seleção de elementos próximos à mediana,processamento de grandes volumes de dados e aplicações em algoritmos de Machine Learning.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: C e Phyton<br>
+**Framework**: (Nenhum)<br>
+
 
 ## Uso 
 Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+
 
 
 
