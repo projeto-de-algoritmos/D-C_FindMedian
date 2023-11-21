@@ -1,39 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int * readData(int * arraySize){
-    FILE *file = fopen("data.txt", "r");
-
-    if (file == NULL) {
-        perror("Unable to open file:\n");
-        return NULL;
-    }
-
-    int num;
-    while (fscanf(file, "%d", &num) != EOF) {
-        (*arraySize)++;
-    }
-    
-    int *array = malloc(sizeof(int) * (*arraySize) );
-    
-    if(array == NULL){
-        perror("malloc");
-        return NULL;
-    }
-
-    // Reset the file pointer to the beginning of the file
-    fseek(file, 0, SEEK_SET);
-    // Read the file and store the numbers into the array
-    for(int i = 0; fscanf(file, "%d", &num) != EOF; i++) {
-        array[i] = num;
-    }
-
-
-    // Close the file
-    fclose(file);
-
-    return array;
-}
+#define ARRAY_SIZE 11
 
 void swap(int arr[], int i, int j){
     int temp = arr[i];
@@ -104,7 +72,7 @@ int GetMedian(int *array, int size) {
         for(int i = 0; i < qut_linhas; i++){
             for(int j = 0; j < 5; j++, x++){
                 m[i][j] = array[x];
-
+                ;
             }
             
             ordena(m, 0, 4, i);
@@ -224,7 +192,7 @@ int exotericSelect(int *array, int k, int arraySize, int *L, int *R, int *I){
             Lsize++;
 
         }else if(array[i] == PossibleMedian){
-            I[Isize] = array[i];
+            I[i] = array[i];
             Isize++;
 
         } else if (array[i] > PossibleMedian){
@@ -267,25 +235,34 @@ int exotericSelect(int *array, int k, int arraySize, int *L, int *R, int *I){
 }
 
 void escope(){
-    int arraySize = 0;
-    int *ptr_arraySize = &arraySize;
-    int *array = readData(ptr_arraySize);
-    if (array == NULL){
-        printf("Error reading data\n");
-        return;
-    }
+    int initValue[ARRAY_SIZE] = {16, 27, 80, 79, 40, 3, 2, 58, 65, 48, 5};
 
-    int k; //MEDIAN NUMBER
-    
-    k = arraySize/2; 
+    int k;
+    if(ARRAY_SIZE % 2 == 0)
+        k = ARRAY_SIZE/2 - 1; //MEDIAN NUMBER
+    else
+        k = ARRAY_SIZE/2;
 
     printf("k(indice da mediana) = %d\n", k);
 
-    int *I = malloc(sizeof(int) * arraySize);
-    int *R = malloc(sizeof(int) * arraySize);
-    int *L = malloc(sizeof(int) * arraySize);
+    int *array = malloc(sizeof(int) * ARRAY_SIZE);
+    if(array == NULL){
+        perror("malloc");
+        return; 
+    }
 
-    int p = exotericSelect(array, k, arraySize, L, R, I);
+    printf("inicial:");
+    for(int i = 0; i < ARRAY_SIZE; i++){
+        array[i] = initValue[i];
+        printf("%d ", array[i] );
+    }
+    printf("\n");
+
+    int *I = malloc(sizeof(int) * ARRAY_SIZE);
+    int *R = malloc(sizeof(int) * ARRAY_SIZE);
+    int *L = malloc(sizeof(int) * ARRAY_SIZE);
+
+    int p = exotericSelect(array, k, ARRAY_SIZE, L, R, I);
 
     printf("-----MEDIANA FINAL: %d -------\n", p);
 }
