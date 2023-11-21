@@ -28,6 +28,11 @@ O video de apresentação da dupla se encontra nesse repositorio ,clicando em "A
 
 ![image](https://github.com/projeto-de-algoritmos/D-C_FindMedian/assets/78215376/02758ab1-6d82-4b42-a140-4d23ec21c1f8)
 
+![image](https://github.com/projeto-de-algoritmos/D-C_FindMedian/assets/64803880/14d15714-626a-4091-ae56-01696e8d087b)
+
+
+
+
 
 
 ## Instalação 
@@ -36,21 +41,20 @@ O video de apresentação da dupla se encontra nesse repositorio ,clicando em "A
 
 
 ## Uso 
-Para os exercicios que envolve a linguagem C digitar o comando:
-```
-gcc -o <nome_do_arquivo> <nome_do_arquivo.c>
-```
-
-```
-./<nome_do_arquivo>
-```
 
 Para os exercicios que envolve a linguagem Phyton,Digitar comando:
 ```
 python3 <nome_do_arquivo>
 ```
 
+Para rodar o projeto :
+```
+gcc FindMedian.c
+```
 
+```
+./a.out
+```
 
 
 
