@@ -20,7 +20,7 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/
 https://leetcode.com/problems/count-of-smaller-numbers-after-self/
 
 ## Apresentação
-O video de apresentação da dupla se encontra nesse repositorio ,clicando em "Apresentação" a seguir ,será redirecionado ao arquivo de apresentação da dupla:[Apresentação](https://github.com/projeto-de-algoritmos/D-C_FindMedian/blob/master/Apresenta%C3%A7%C3%A3o_DeC.mp4)
+O video de apresentação da dupla se encontra nesse repositorio ,clicando em "Apresentação" a seguir ,será redirecionado ao arquivo de apresentação da dupla:[Apresentação](https://github.com/projeto-de-algoritmos/D-C_FindMedian/blob/master/Apresenta%C3%A7%C3%A3o%20DC.mp4)
 
 
 ## Screenshots
