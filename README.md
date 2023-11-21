@@ -14,7 +14,11 @@ Esse projeto consiste em achar a mediana de uma fonte muito grande de dados ,nel
 Outros exemplos de problemas que ele pode resolver inclui: estatísticas de ordem em conjuntos grandes,seleção de elementos próximos à mediana,processamento de grandes volumes de dados e aplicações em algoritmos de Machine Learning.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![image](https://github.com/projeto-de-algoritmos/D-C_FindMedian/assets/78215376/33127932-9c95-4ca6-bb51-b998b9220b61)
+
+![image](https://github.com/projeto-de-algoritmos/D-C_FindMedian/assets/78215376/02758ab1-6d82-4b42-a140-4d23ec21c1f8)
+
+
 
 ## Instalação 
 **Linguagem**: C e Phyton<br>
@@ -22,7 +26,19 @@ Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+Para os exercicios que envolve a linguagem C digitar o comando:
+```
+gcc -o <nome_do_arquivo> <nome_do_arquivo.c>
+```
+
+```
+./<nome_do_arquivo>
+```
+
+Para os exercicios que envolve a linguagem Phyton,Digitar comando:
+```
+python3 <nome_do_arquivo>
+```
 
 
 
